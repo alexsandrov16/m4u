@@ -58,8 +58,9 @@
     --font-weight: 400;
     --font-size: 16px;
     --border-radius: .75em;
+    --toolbar-height: 4em;
     --aside-w-lg: 15.625em;
-    --aside-w-sm: 4em;
+    --aside-w-sm: var(--toolbar-height);
     /* --border-width: 1px;
     --outline-width: 3px;
 
@@ -77,6 +78,8 @@
     --nav-link-spacing-horizontal: 0.5rem;
     --form-label-font-weight: var(--font-weight);*/
     --transition: 0.25s ease-in-out;
+    --fadeIn: fadeIn .8s ease;
+    --fadeOut: fadeOut .8s ease;
 }
 
 
@@ -95,6 +98,9 @@
     --muted-border-color: hsl(205deg, 20%, 94%);
     --card-background-color: var(--background-color);
 
+    --shadow-color: rgba(76, 78, 100, .35);
+    --toolbar-icon-action: rgba(76, 78, 100, .4);
+    --toolbar-icon-hover: rgba(76, 78, 100, .15);
 }
 
 @media only screen and (prefers-color-scheme: dark) {
@@ -109,7 +115,14 @@
         --h5-color: hsl(205deg, 16%, 77%);
         --h6-color: #afbbc4;
         --muted-color: hsl(205deg, 10%, 50%);
+        --muted-border-color: hsl(220deg, 6%, 35%);
         --card-background-color: #242b3b;
+
+
+
+        --shadow-color: rgba(15, 15, 15, .7);
+        --toolbar-icon-action: rgba(76, 78, 100);
+        --toolbar-icon-hover: rgba(76, 78, 100, .5);
     }
 }
 
@@ -271,15 +284,51 @@ aside {
     z-index: 1;
 }
 
-aside>main {
-    flex: 1;
+aside.toggle {
+    left: 0;
 }
 
 aside>* {
     display: flex;
     flex-direction: column;
     padding: .5em .5em 1em;
-    
+}
+
+aside>header {
+    height: var(--toolbar-height);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: hsl(205deg, 16%, 77%);
+}
+
+:is(nav[role="toolbar"], aside>header) .material-icons {
+    border-radius: 50%;
+    padding: .375em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+aside>header .material-icons:hover {
+    background-color: rgba(76, 78, 100, 0.5);
+}
+
+aside>header .material-icons:active {
+    background-color: rgba(76, 78, 100);
+}
+
+aside>header .close-sidebar {
+    position: absolute;
+    left: .5em;
+}
+
+aside>main {
+    flex: 1;
 }
 
 aside>* a {
@@ -287,7 +336,9 @@ aside>* a {
     color: hsl(205deg, 16%, 77%);
     display: flex;
     align-items: center;
-    height: 3em/*48px*/;
+    height: 3em
+        /*48px*/
+    ;
     padding: .125em .75em;
     transition: all var(--transition);
     margin-bottom: .125em;
@@ -297,11 +348,13 @@ aside>* a {
 aside>* a::before {
     content: attr(data-name);
     position: absolute;
-    left: 3.5em/*56*/;
+    left: 3.5em
+        /*56*/
+    ;
 }
 
 aside>* a:hover {
-    color: hsl(205deg, 16%, 77%);
+    color: #fff;
     background-color: rgba(76, 78, 100, 0.5)
 }
 
@@ -314,8 +367,51 @@ aside>* a :first-child {
     margin-right: .75em;
 }
 
-aside.toggle {
-    left: 0;
+/**
+ * Topbar
+ */
+nav[role="toolbar"] {
+    height: var(--toolbar-height);
+    padding: 0 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav[role="toolbar"] .material-icons:hover {
+    background-color: var(--toolbar-icon-hover);
+}
+
+nav[role="toolbar"] .material-icons:active {
+    background-color: var(--toolbar-icon-action);
+}
+
+/**
+ * Grid
+ */
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+/**
+ * Utils
+ */
+.container {
+    padding: 1.5em;
+}
+
+.card {
+    background-color: var(--card-background-color);
+    /*border: 1px solid var(--muted-border-color);*/
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px 1px var(--shadow-color);
+    padding: 1em;
+}
+
+[class*="show-"] {
+    display: none !important;
 }
 
 /**
@@ -324,16 +420,23 @@ aside.toggle {
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
 
-@media (max-width: 768px) {}
+@media (max-width: 767px) {
+    .show-sm {
+        display: block !important;
+    }
+
+    aside>header .logo {
+        display: block;
+    }
+}
 
 /* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {/*}
-
-/*@media (min-width: 768px) and (max-width: 992px) {*/
+@media (min-width: 768px) {
     aside {
         width: var(--aside-w-sm);
         left: 0;
     }
+
     aside>* a::before {
         display: none;
     }
@@ -342,13 +445,50 @@ aside.toggle {
         margin-left: var(--aside-w-sm);
     }
 
-    aside.toggle {
+    aside.md-open {
         width: var(--aside-w-lg);
     }
-    aside.toggle>* a::before {
-        animation: fadeIn .8s ease;
+
+    aside.md-open>header .logo {
         display: block;
-        left: 3.5em/*56*/;
+    }
+
+    aside.md-open>* a::before {
+        animation: var(--fadeIn);
+        display: block;
+        left: 3.5em
+            /*56*/
+        ;
+    }
+
+    /**
+    * Grid
+    */
+    #welcome,
+    #widget {
+        width: calc(50% - 1em);
+    }
+
+    /**
+    * Utils
+    */
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .show-md {
+        display: block !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    aside header .logo {
+        display: none;
+    }
+
+    aside.open-sm header .logo {
+        display: block;
     }
 }
 
@@ -358,11 +498,15 @@ aside.toggle {
         left: 0;
         width: var(--aside-w-lg);
     }
+
     aside>* a::before {
-        animation: fadeIn .8s ease;
+        animation: var(--fadeIn);
         display: block;
-        left: 3.5em/*56*/;
+        left: 3.5em
+            /*56*/
+        ;
     }
+
     aside~main {
         margin-left: var(--aside-w-lg);
         transition: var(--transition);
@@ -375,13 +519,44 @@ aside.toggle {
     aside.toggle>* a::before {
         display: none;
     }
+
     aside.toggle~main {
         margin-left: var(--aside-w-sm);
+    }
+
+    aside.toggle header .logo {
+        display: none;
+    }
+
+    /**
+    * Grid
+    */
+    #welcome,
+    #comunity {
+        width: calc(40% - 1em);
+    }
+
+    #widget,
+    #activity {
+        width: calc(60% - 1em);
+    }
+
+    /**
+     * Utils
+     */
+    .container {
+        width: 85%;
+        margin: 0 auto;
     }
 }
 
 /* X-Large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
 
 /* XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) {}

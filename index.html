@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +11,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/icons.css">
 </head>
+
 <body>
     <aside>
-        <header><i onclick="M4U.toggleSidebar()" class="material-icons">menu</i></header>
+        <header>
+            <i onclick="M4U.toggleSidebar()" class="material-icons close-sidebar show-sm">close</i>
+            <i onclick="M4U.toggleSidebar()" class="material-icons close-sidebar show-md">sort</i>
+            <h2 class="logo">M4U</h2>
+        </header>
         <main>
             <a href="" class="active" data-name="Dashboard"><i class="material-icons">dashboard</i></a>
             <a href="" data-name="Contenidos"><i class="material-icons">file_copy</i></a>
@@ -25,16 +31,44 @@
         </footer>
     </aside>
     <main>
-        <nav role="topbar">
+        <nav role="toolbar">
             <div>
-                <i onclick="M4U.toggleSidebar()" class="material-icons">menu</i>
+                <i onclick="M4U.toggleSidebar()" class="material-icons show-sm">sort</i>
+
+            </div>
+            <div>
+                <i class="material-icons">account_circle</i>
             </div>
         </nav>
 
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, doloremque rem nisi iure perferendis magni impedit quidem omnis eum ullam ipsa sit aliquid, doloribus aut recusandae saepe atque corporis odio?
+        <div class="container">
+            <div class="dashboard">
+                <div class="card" id="welcome">
+                    <h3>¡Bienvenidos!</h3>
+                    
+                    <p>Ha iniciado sesión como admin. Para ayudarlo a comenzar a construir con Make4U, proporcionamos algunos enlaces rápidos.</p>
+                </div>
+                <div id="widget">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, vitae, provident veniam debitis
+                    labore iste reiciendis natus optio unde hic eaque voluptas deleniti architecto dolores reprehenderit
+                    ut aperiam nesciunt! Consequatur.
+                </div>
+                <div class="card" id="activity">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt rerum
+                    distinctio dignissimos sapiente ad, cum eum officiis, ipsa nostrum facere voluptas, atque placeat
+                    facilis beatae minima eos nisi minus laudantium.</div>
+                <div class="card" id="comunity">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto rem fugit
+                    harum fuga expedita corrupti amet tempora quo eum? Cum enim quam ea libero sit exercitationem
+                    blanditiis
+                    natus assumenda nisi?
+                </div>
+            </div>
+        </div>
     </main>
     <div class="scrim"></div>
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
