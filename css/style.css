@@ -262,7 +262,7 @@ a:hover {
 aside {
     background-color: #242b3b;
     height: 100vh;
-    width: var(--aside-w-lg);
+    width: 100%;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -278,12 +278,26 @@ aside>main {
 aside>* {
     display: flex;
     flex-direction: column;
-    padding: 0 .75em;
+    padding: .5em .5em 1em;
+    
 }
 
 aside>* a {
-    color: hsl(205deg, 16%, 77%);
     border-radius: var(--border-radius);
+    color: hsl(205deg, 16%, 77%);
+    display: flex;
+    align-items: center;
+    height: 3em/*48px*/;
+    padding: .125em .75em;
+    transition: all var(--transition);
+    margin-bottom: .125em;
+    position: relative;
+}
+
+aside>* a::before {
+    content: attr(data-name);
+    position: absolute;
+    left: 3.5em/*56*/;
 }
 
 aside>* a:hover {
@@ -293,6 +307,11 @@ aside>* a:hover {
 
 aside>* a.active {
     background-color: #5687ff;
+    color: #fff;
+}
+
+aside>* a :first-child {
+    margin-right: .75em;
 }
 
 aside.toggle {
@@ -305,34 +324,18 @@ aside.toggle {
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
 
-@media (max-width: 768px) {
-    .scrim {
-        background-color: rgba(200, 200, 200, 0.5);
-        backdrop-filter: blur(3px);
-        height: 100vh;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        display: none;
-    }
-
-    .scrim.toggle {
-        display: block;
-    }
-}
+@media (max-width: 768px) {}
 
 /* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-    aside>* a {
-        width: 56px;
-        height: 56px;
-    }
-}
+@media (min-width: 768px) {/*}
 
-@media (min-width: 768px) and (max-width: 992px) {
+/*@media (min-width: 768px) and (max-width: 992px) {*/
     aside {
         width: var(--aside-w-sm);
         left: 0;
+    }
+    aside>* a::before {
+        display: none;
     }
 
     aside~main {
@@ -342,12 +345,23 @@ aside.toggle {
     aside.toggle {
         width: var(--aside-w-lg);
     }
+    aside.toggle>* a::before {
+        animation: fadeIn .8s ease;
+        display: block;
+        left: 3.5em/*56*/;
+    }
 }
 
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
     aside {
         left: 0;
+        width: var(--aside-w-lg);
+    }
+    aside>* a::before {
+        animation: fadeIn .8s ease;
+        display: block;
+        left: 3.5em/*56*/;
     }
     aside~main {
         margin-left: var(--aside-w-lg);
@@ -358,6 +372,9 @@ aside.toggle {
         width: var(--aside-w-sm);
     }
 
+    aside.toggle>* a::before {
+        display: none;
+    }
     aside.toggle~main {
         margin-left: var(--aside-w-sm);
     }
