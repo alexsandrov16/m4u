@@ -1,7 +1,8 @@
+/**
+ * M4U
+ */
 
-const M4U = {
-    toggleSidebar: function () {
-        document.querySelector('aside').classList.toggle('toggle');
-        document.querySelector('aside').classList.toggle('md-open');
-    }
+
+function openM() {
+    document.querySelector('aside').classList.toggle('open');
 }
