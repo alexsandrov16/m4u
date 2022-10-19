@@ -2,7 +2,7 @@
  * m4u
  * Copyright 2022 - License MIT
  */
- :root {
+:root {
 
     --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
         "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -12,7 +12,7 @@
     --font-size: 16px;
 
     /* Height & Width */
-    --navbar-h: 4em;
+    --navbar-h: 3.5em;
     /*64px*/
     --aside-rail: var(--navbar-h);
     /*64px*/
@@ -21,7 +21,7 @@
 
     /* Border */
     --border: 1px solid var(--border-color);
-    --radius:1em;
+    --radius: 1em;
 
     /* Animation */
     --transition: .3s ease-in-out;
@@ -56,13 +56,13 @@
     --body-color: #3e5569;
     --border-color: #e9ebf0;
 
-    --primary-color:#3088ff;
-    --primary-hover-color:#345aea;
+    --primary-color: #3388ff;
+    --primary-hover-color: #0066ff;
 
-    --info:#007bff;
-    ---success:#2dce89;
-    --warning:#ffc107;
-    --danger:#dc3545;
+    --info: #007bff;
+    ---success: #2dce89;
+    --warning: #ffc107;
+    --danger: #dc3545;
 }
 
 /**
@@ -94,6 +94,10 @@ body {
     min-height: 100vh;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+main{
+    padding: 1.5em 0;
 }
 
 img {
@@ -208,15 +212,33 @@ a:hover {
 /**
  * Button
  */
-[role="button"]{
-    display: inline-block;
+[role="button"] {
     background-color: var(--primary-color);
     color: white;
-    border: 0;
-    border-radius: var(--radius);
-    height: 2.5em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    height: 40px;
     padding: 0 2em;
-    font-size: 18px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-size: 14px;
+    transition: all var(--transition);
+}
+
+[role="button"]:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+}
+
+[role="button"]>*{
+    margin-right: .5em;
 }
 
 /**
@@ -224,7 +246,7 @@ a:hover {
  */
 aside {
     background-color: #fff;
-    border: var(--border);
+    border-right: var(--border);
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -234,11 +256,11 @@ aside {
     left: -200%;
 }
 
-aside.open{
+aside.open {
     left: 0;
 }
 
-aside.open~main{
+aside.open~main {
     padding-left: var(--aside-drawer);
 }
 
@@ -316,17 +338,19 @@ nav {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    aside{
+    aside {
         left: 0;
     }
-    aside~main{
+
+    aside~main {
         padding-left: var(--aside-drawer);
     }
 
-    aside.rail{
+    aside.rail {
         width: var(--aside-rail);
     }
-    aside.rail~main{
+
+    aside.rail~main {
         padding-left: var(--aside-rail);
     }
 }
