@@ -294,23 +294,57 @@ aside header {
     align-items: center;
     border-bottom: var(--border);
 }
+aside header i{
+    cursor: pointer;
+}
 
 aside main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding: 5px 0;
 }
 
 aside footer {
     border-top: var(--border);
     height: 4em;
+    display: flex;
+    align-items: center;
 }
 
-aside footer span{
-    display: block;
+aside footer span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 40px;
     width: 40px;
     background-color: var(--primary-color);
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+aside footer span::before {
+    content: '';
+    height: .625em;
+    width: .625em;
+    background-color: var(---success);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+aside footer span::after {
+    content: attr(data-name);
+    position: absolute;
+    left: 3em;
+    color: var(--body-color);
+    font-size: 16px;
+    animation: var(--fadeIn);
 }
 
 aside a {
@@ -355,6 +389,19 @@ nav {
     align-items: center;
     height: var(--navbar-h);
     padding: 0 1em;
+}
+
+/**
+ * Hero
+ */
+.hero{
+    height: 12.5em;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -426,16 +473,14 @@ nav {
         display: none !important;
     }
 
+    /**
+    * Aside
+    */
     aside,
     aside.rail {
         left: 0;
         width: var(--aside-rail);
         padding: 0 6px;
-    }
-
-    :is(aside, aside.rail) a {
-        width: 2.5em;
-        justify-content: center;
     }
 
     aside~main,
@@ -446,6 +491,13 @@ nav {
 
 /* Only Medium devices */
 @media (min-width: 768px) and (max-width:992px) {
+    aside header{display: none;}
+
+    aside a {
+        width: 2.5em;
+        justify-content: center;
+    }
+
     aside a::after {
         background-color: #3e5569;
         color: white;
@@ -456,15 +508,13 @@ nav {
         width: max-content;
         display: none;
     }
+
     aside a:hover::after {
         display: block;
         animation: var(--fadeIn);
     }
-}
 
-/* Small & Medium devices */
-@media (max-width:992px) {
-    aside .toggle-sidenav {
+    aside footer span::after {
         display: none;
     }
 }
@@ -475,42 +525,18 @@ nav {
         display: none !important;
     }
 
+    /**
+    * Aside
+    */
     aside {
         left: 0;
         width: var(--aside-drawer);
         padding: 0 1em;
     }
 
-    aside main {
-        margin-top: 1.5em;
-    }
-
-    aside .toggle-sidenav {
-        position: absolute;
-        transition: left var(--transition);
-        top: 50px;
-        background-color: white;
-        border: var(--border);
-        border-radius: 50%;
-        cursor: pointer;
-        color: #adb5bd;
-        font-size: 20px;
-        padding: 2px;
-        left: calc(var(--aside-drawer) - 75px);
-        transition: var(--transition);
-    }
-
-    aside .toggle-sidenav:hover {
-        border-color: #ced4da;
-    }
-
-    aside.rail .toggle-sidenav {
-        left: calc(var(--aside-rail) - 55px);
-    }
-
-    aside a {
-        width: auto !important;
-        justify-content: left !important;
+    aside.rail a {
+        width: 2.5em;
+        justify-content: center;
     }
 
     aside.rail a::after {
@@ -523,9 +549,14 @@ nav {
         width: max-content;
         display: none;
     }
+
     aside.rail a:hover::after {
         display: block;
         animation: var(--fadeIn);
+    }
+
+    aside.rail footer span::after {
+        display: none;
     }
 
     aside a::after {
