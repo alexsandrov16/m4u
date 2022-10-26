@@ -1,0 +1,26 @@
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-h);
+    padding: var(--padding);
+}
+
+nav .right{
+    display: flex;
+    align-items: center;
+}
+nav .right>*{
+    margin-left: 8px;
+}
+
+nav a{
+    height: 40px;
+    width: 40px;
+    border-radius: var(--border-radius-c);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: initial;
+}

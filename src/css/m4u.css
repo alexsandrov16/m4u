@@ -4,16 +4,33 @@
 * License MIT
 * Copyright 2022
 */
+@charset "UTF-8";
 
 :root {
+    --body-bg: #f8f9fa;
+    --body-color: #3e5569;
+    --link-color: #0d6efd;
+    --link-hover-color: #0a58ca;
+
+    --code-color: #d63384;
+    --highlight-bg: #fff3cd;
+    /* e1256012
+
     /*=============================measures=============================*/
-    --nav-h: 64px;
-    --btn-h: 40px;
-    --border-radius: 10px;
-    --border-radius-c: 50%;
-    --padding: 0 1em;
+    --nav-h: 4em;
+    --btn-h: 2.5em;
 
 
+    --border-radius: 0.625rem;
+    --border-radius-sm: 0.25rem;
+    --border-radius-lg: 0.5rem;
+    ---border-radius-xl: 1rem;
+    ---border-radius-2xl: 2rem;
+    ---border-radius-pill: 50rem;
+
+
+
+    --transition:.3s ease-in-out;
 
     /*=============================Tpography=============================*/
     --bs-blue: #0d6efd;
@@ -59,30 +76,20 @@
     --bs-black-rgb: 0, 0, 0;
     --bs-body-color-rgb: 33, 37, 41;
     --bs-body-bg-rgb: 255, 255, 255;
-   
-    
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    
-    
 
-    --bs-body-color: #212529;
-    --bs-body-bg: #fff;
-    
-    
+
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+
+
     --bs-border-color: #dee2e6;
     --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
-    --bs-border-radius: 0.375rem;
-    --bs-border-radius-sm: 0.25rem;
-    --bs-border-radius-lg: 0.5rem;
-    --bs-border-radius-xl: 1rem;
-    --bs-border-radius-2xl: 2rem;
-    --bs-border-radius-pill: 50rem;
-    --bs-link-color: #0d6efd;
-    --bs-link-hover-color: #0a58ca;
+
+
     --bs-code-color: #d63384;
     --bs-highlight-bg: #fff3cd;
 }
 
+/*=============================Reset=============================*/
 *,
 *::before,
 *::after {
@@ -96,22 +103,33 @@ html {
     outline: none;
 }
 
+button,
+input {
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
+/*=============================DOM=============================*/
 body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
+    color: var(--body-color);
+    background-color: var(--body-bg);
     display: flex;
     flex-direction: column;
     height: 100vh;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-main{
-    flex:1;
+
+main {
+    flex: 1;
 }
 
 /*=============================Tpography=============================*/
@@ -181,12 +199,12 @@ p {
 }
 
 a {
-    color: var(--bs-link-color);
-    text-decoration: underline;
+    color: var(--link-color);
+    text-decoration: none;
 }
 
 a:hover {
-    color: var(--bs-link-hover-color);
+    color: var(--link-hover-color);
 }
 
 a:not([href]):not([class]),
@@ -196,9 +214,7 @@ a:not([href]):not([class]):hover {
 }
 
 pre,
-code,
-kbd,
-samp {
+code {
     font-family: monospace;
     font-size: 1em;
 }
@@ -207,95 +223,45 @@ pre {
     display: block;
     margin-top: 0;
     margin-bottom: 1rem;
-    overflow: auto;
     font-size: 0.875em;
 }
 
 pre code {
     font-size: inherit;
-    color: inherit;
     word-break: normal;
+    display: block;
+    border-radius: var(--border-radius);
+    overflow-x: scroll;
+    padding: 1em;
+
+    background-color: #ced4da;
+    color: inherit;
 }
 
+/*
 code {
     font-size: 0.875em;
-    color: var(--bs-code-color);
+    color: var(--code-color);
+    background: var(--highlight-bg);
     word-wrap: break-word;
+    padding: 3px 4px;
+    border-radius: 5px;
 }
+*/
 
-a>code {
-    color: inherit;
-}
 
-kbd {
-    padding: 0.1875rem 0.375rem;
-    font-size: 0.875em;
-    color: var(--bs-body-bg);
-    background-color: var(--bs-body-color);
-    border-radius: 0.25rem;
-}
-
-kbd kbd {
-    padding: 0;
-    font-size: 1em;
-}
-
-/*=============================Tpography=============================*/
-figure {
-    margin: 0 0 1rem;
-}
-
+/*=============================Util=============================*/
 img {
     width: 100%;
 }
 
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*=============================Icons=============================*/
 .icon-m4u {
     width: 24px;
     height: 24px;
@@ -305,3 +271,69 @@ img {
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+
+/*=============================Button=============================*/
+[role="button"] {
+    display: inline-block;
+    background-color: var(--link-color);
+    border-radius: var(---border-radius-2xl);
+    color: white !important;
+    cursor: pointer;
+    height: 2.5em;
+    line-height: 2.5;
+    padding: 0 1em;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    transition: all var(--transition);
+}
+
+[role="button"]:hover {
+    background-color: var(--link-hover-color);
+
+}
+[role="button"]:is(:disabled,.disabled){
+    background-color: #e9ecef;
+    color: #adb5bd !important;
+    cursor: default;
+}
+[role="button"].outline{
+    background-color: transparent;
+    border: 1px solid var(--link-color);
+    color: var(--link-color) !important;
+}
+[role="button"].outline:hover{
+    background-color: var(--link-color);
+    color:white !important;
+}
+[role="button"].btn-lg {
+    display: block;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+/*=============================Input=============================*/
+
+
+
+/*=============================Image=============================*/
+
+
+/*=============================Image=============================*/
+
+
+/*=============================Image=============================*/
+
+
+/*=============================Image=============================*/
+
+
+/*=============================Image=============================*/
+
+
+/*=============================Image=============================*/
+
+
+/*=============================Image=============================*/
+
+
+/*=============================Image=============================*/
