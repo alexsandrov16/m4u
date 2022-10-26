@@ -12,6 +12,8 @@
     --link-color: #0d6efd;
     --link-hover-color: #0a58ca;
 
+    --secondary: #6c757d;
+
     --code-color: #d63384;
     --highlight-bg: #fff3cd;
     /* e1256012
@@ -298,11 +300,11 @@ img {
 }
 [role="button"].outline{
     background-color: transparent;
-    border: 1px solid var(--link-color);
-    color: var(--link-color) !important;
+    border: 1px solid var(--secondary);
+    color: var(--secondary) !important;
 }
 [role="button"].outline:hover{
-    background-color: var(--link-color);
+    background-color: var(--secondary);
     color:white !important;
 }
 [role="button"].btn-lg {
@@ -315,19 +317,19 @@ img {
 
 
 
-/*=============================Image=============================*/
+/*=============================Switch=============================*/
 
 
-/*=============================Image=============================*/
+/*=============================Nav=============================*/
 
 
-/*=============================Image=============================*/
+/*=============================Aside=============================*/
 
 
-/*=============================Image=============================*/
+/*=============================MediaQuery=============================*/
 
 
-/*=============================Image=============================*/
+/*=============================Animation=============================*/
 
 
 /*=============================Image=============================*/
