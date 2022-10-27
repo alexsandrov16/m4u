@@ -10,7 +10,7 @@
     --body-bg: #f8f9fa;
     --body-color: #3e5569;
     --link-color: #0d6efd;
-    --link-hover-color: #0a58ca;
+    --hover-color: #0076cc;
 
     --secondary: #6c757d;
 
@@ -35,7 +35,38 @@
     --transition:.3s ease-in-out;
 
     /*=============================Tpography=============================*/
-    --bs-blue: #0d6efd;
+    --blue: #007bff;
+--indigo: #6610f2;
+--purple: #6f42c1;
+--pink: #e83e8c;
+--red: #dc3545;
+--orange: #fd7e14;
+--yellow: #ffc107;
+--green: #28a745;
+--teal: #20c997;
+--cyan: #17a2b8;
+--gray: #7e8299;
+--gray-dark: #3f4254;
+--primary: #0094ff;
+--secondary: #89929f;
+--success: #50cd89;
+--info: #9c5aff;
+--warning: #ff490f;
+--danger: #ef305e;
+--light: #f5f8fa;
+--dark: #2f3044;
+--white: #fff;
+--muted: #b5b5c3;
+--breakpoint-xs: 0;
+--breakpoint-sm: 576px;
+--breakpoint-md: 768px;
+--breakpoint-lg: 992px;
+--breakpoint-xl: 1200px;
+--breakpoint-xxl: 1400px;
+--font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+--font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+
+    /*--bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
     --bs-purple: #6f42c1;
     --bs-pink: #d63384;
@@ -88,7 +119,7 @@
 
 
     --bs-code-color: #d63384;
-    --bs-highlight-bg: #fff3cd;
+    --bs-highlight-bg: #fff3cd;*/
 }
 
 /*=============================Reset=============================*/
@@ -201,12 +232,12 @@ p {
 }
 
 a {
-    color: var(--link-color);
+    color: var(--primary);
     text-decoration: none;
 }
 
 a:hover {
-    color: var(--link-hover-color);
+    color: var(--primary-hover-color);
 }
 
 a:not([href]):not([class]),
@@ -277,8 +308,8 @@ img {
 /*=============================Button=============================*/
 [role="button"] {
     display: inline-block;
-    background-color: var(--link-color);
-    border-radius: var(---border-radius-2xl);
+    background-color: var(--primary);
+    border-radius: var(---border-radius);
     color: white !important;
     cursor: pointer;
     height: 2.5em;
@@ -290,7 +321,7 @@ img {
 }
 
 [role="button"]:hover {
-    background-color: var(--link-hover-color);
+    background-color: var(--blue);
 
 }
 [role="button"]:is(:disabled,.disabled){
