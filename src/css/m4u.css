@@ -30,10 +30,12 @@
     --white: #fff;
     --muted: #b5b5c3;
 
-    --color:#0094ff;
-    --color-hover:/*#126be1*/#0a84ff;
+    --color: #0094ff;
+    --color-hover:
+        /*#126be1*/
+        #0a84ff;
 
-    
+
 
 
     --code-color: #d63384;
@@ -75,12 +77,13 @@
     color-scheme: light;
     --body-bg: var(--light);
     --body-color: var(--gray-dark);
-    --card-bg:var(--white);
+    --border-color: var(--muted);
+    --card-bg: var(--white);
     --disabled-bg: #e9ecef;
     --disabled-color: var(--muted);
-    --second:#89929f66;
-    --second-hover:#7e82998c;
-    --switch:var(--muted);
+    --second: #89929f66;
+    --second-hover: #7e82998c;
+    --switch: var(--muted);
 }
 /*
 @media only screen and (prefers-color-scheme: dark) {
@@ -88,12 +91,13 @@
         color-scheme: dark;
         --body-bg: var(--dark);
         --body-color: var(--light);
-        --card-bg:var(--gray-dark);
-        --disabled-bg:#92929f4f;
+        --border-color: var(--secondary);
+        --card-bg: var(--gray-dark);
+        --disabled-bg: #92929f4f;
         --disabled-color: #92929f;
-        --second:var(--secondary);
-    --second-hover:var(--gray);
-    --switch:var(--gray);
+        --second: var(--secondary);
+        --second-hover: var(--gray);
+        --switch: var(--gray);
     }
 }
 
@@ -101,12 +105,12 @@
     color-scheme: dark;
     --body-bg: #1e1e2d;
     --body-color: var(--light);
-    --card-bg:var(--gray-dark);
-    --disabled-bg:#92929f4f;
+    --card-bg: var(--gray-dark);
+    --disabled-bg: #92929f4f;
     --disabled-color: #92929f;
-    --second:var(--secondary);
-    --second-hover:var(--gray);
-    --switch:var(--gray);
+    --second: var(--secondary);
+    --second-hover: var(--gray);
+    --switch: var(--gray);
 }
 
 /*=============================Reset=============================*/
@@ -234,42 +238,6 @@ a:not([href]):not([class]):hover {
     text-decoration: none;
 }
 
-pre,
-code {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 1em;
-}
-
-pre {
-    display: block;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 0.875em;
-}
-
-pre code {
-    font-size: inherit;
-    word-break: normal;
-    display: block;
-    border-radius: var(--border-radius);
-    overflow-x: scroll;
-    padding: 1em;
-
-    background-color: #ced4da;
-    color: inherit;
-}
-
-/*
-code {
-    font-size: 0.875em;
-    color: var(--code-color);
-    background: var(--highlight-bg);
-    word-wrap: break-word;
-    padding: 3px 4px;
-    border-radius: 5px;
-}
-*/
-
 
 /*=============================Util=============================*/
 img {
@@ -279,7 +247,7 @@ img {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1em;
+    padding: 1em 1em 0;
 }
 
 /*=============================Icons=============================*/
@@ -331,6 +299,7 @@ img {
 [role="button"].second:hover {
     background-color: var(--second-hover);
 }
+
 [role="button"].btn-lg {
     display: block;
     text-align: center;
@@ -338,22 +307,22 @@ img {
 }
 
 /*=============================Input=============================*/
-input:is([type="text"],[type="password"]){
+input:is([type="text"], [type="password"]) {
     display: block;
-    border: 1px solid var(--muted);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     height: 40px;
     width: 100%;
     padding: 0 1em;
 }
 
-input:is([type="text"],[type="password"]):focus{
+input:is([type="text"], [type="password"]):focus {
     border-color: var(--color);
 }
 
 
 /*=============================Switch=============================*/
-input[type="checkbox"][role="switch"]{
+input[type="checkbox"][role="switch"] {
     height: 22px;
     width: 45px;
     background-color: var(--switch);
@@ -362,7 +331,8 @@ input[type="checkbox"][role="switch"]{
     position: relative;
     cursor: pointer;
 }
-input[type="checkbox"][role="switch"]::before{
+
+input[type="checkbox"][role="switch"]::before {
     content: "";
     height: 1em;
     width: 1em;
@@ -373,29 +343,33 @@ input[type="checkbox"][role="switch"]::before{
     left: 3px;
     transition: all .15s ease;
 }
-input[type="checkbox"][role="switch"]:checked{
+
+input[type="checkbox"][role="switch"]:checked {
     background-color: var(--color);
 }
-input[type="checkbox"][role="switch"]:checked::before{
+
+input[type="checkbox"][role="switch"]:checked::before {
     margin-left: calc(100% - 6px - 16px);
 }
+
 /*=============================Card=============================*/
-article{
-    border: 1px solid var(--muted);
+article {
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: 1em;
     background-color: var(--card-bg);
 }
 
 /*=============================Modal=============================*/
-dialog{
+dialog {
     display: none;
 }
-dialog[open]{
+
+dialog[open] {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(20,20,20,.25);
+    background-color: rgba(20, 20, 20, .25);
     backdrop-filter: blur(3px);
     border: 0;
     position: fixed;
@@ -404,21 +378,20 @@ dialog[open]{
     height: 100vh;
     width: 100vw;
 }
-dialog article{
+
+dialog article {
     max-width: 650px;
     border: 0;
 }
 
 /*=============================Hero=============================*/
-.hero{
 
-}
 
 /*=============================Nav=============================*/
-nav{
+nav {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     height: 64px;
     padding: 0 1em;
 }
@@ -430,6 +403,3 @@ nav{
 
 
 /*=============================Animation=============================*/
-
-
-

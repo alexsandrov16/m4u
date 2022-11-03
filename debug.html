@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Mode</title>
+    <link rel="stylesheet" href="src/css/m4u.css">
+</head>
+<style>
+    .hero {
+        background-color: var(--red);
+        color: white;
+        margin-bottom: 2em;
+        padding: 1em 0 2em;
+    }
+
+    .hero * {
+        color: white !important;
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 992px) {
+        .row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    /**********************************************************/
+
+    pre,
+    code {
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 1em;
+    }
+
+    pre {
+        display: block;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 0.875em;
+    }
+
+    pre code {
+        font-size: inherit;
+        word-break: normal;
+        display: block;
+        border-radius: var(--border-radius);
+        overflow-x: scroll;
+        padding: 1em;
+
+        background-color: #ced4da;
+        color: inherit;
+    }
+
+    /*
+code {
+    font-size: 0.875em;
+    color: var(--code-color);
+    background: var(--highlight-bg);
+    word-wrap: break-word;
+    padding: 3px 4px;
+    border-radius: 5px;
+}
+*/
+</style>
+
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>ParseError</h1>
+            <a href="">
+                <h3>syntax error, unexpected '}', expecting ';'</h3>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <article>
+            <div class="row">
+                <ul>
+                    <li>
+                        <a><span>..\mint\Controller\FrontPage.php</span> <span>28</span></a>
+                    </li>
+                    <li>
+                        <a><span>..\mint\Controller\FrontPage.php</span> <span>28</span></a>
+                    </li>
+                    <li>
+                        <a><span>..\mint\Controller\FrontPage.php</span> <span>28</span></a>
+                    </li>
+                    <li>
+                        <a><span>..\mint\Controller\FrontPage.php</span> <span>28</span></a>
+                    </li>
+                    <li>
+                        <a><span>..\mint\Controller\FrontPage.php</span> <span>28</span></a>
+                    </li>
+                    <li>
+                        <a><span>..\mint\Controller\FrontPage.php</span> <span>28</span></a>
+                    </li>
+                </ul>
+
+                <pre><code><span class="number">21 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">/*
+                    <span class="number">22 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;view(__FUNCTION__,&nbsp;[
+                    <span class="number">23 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'page_title'&nbsp;=&gt;&nbsp;'Home&nbsp;-&nbsp;Site',
+                    <span class="number">24 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'page_description'&nbsp;=&gt;&nbsp;'Pagina&nbsp;de&nbsp;inicio',
+                    <span class="number">25 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//'description'&nbsp;=&gt;&nbsp;env('description'),
+                    <span class="number">26 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'page'&nbsp;=&gt;&nbsp;$this-&gt;theme
+                    <span class="number">27 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]);*/
+                    <p class="line-error"><span class="number">28 </span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">}
+                    </span></p><span class="number">29 </span> }
+                    <span class="number">30 </span> </span>
+                    </code></pre>
+            </div>
+        </article>
+    </div>
+
+</body>
+
+</html>
